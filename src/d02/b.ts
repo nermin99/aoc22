@@ -1,4 +1,4 @@
-import fs from 'fs'
+const fs = require('fs')
 
 const data: string[][] = fs
   .readFileSync(__dirname + '/data.txt', 'utf8')
@@ -82,5 +82,3 @@ for (const row of data) {
   p2score += values[p2shape] + results[p2result]
 }
 console.log(p2score)
-
-export {}

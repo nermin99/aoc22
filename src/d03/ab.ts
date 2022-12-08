@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const data = fs.readFileSync(__dirname + '/data.txt', 'utf8').split('\n')
+const data: string[] = fs.readFileSync(__dirname + '/data.txt', 'utf8').split('\n')
 
 // A ∩ B ∩ ...
 const intersect = (setA, setB, ...args) => {

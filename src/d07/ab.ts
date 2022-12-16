@@ -4,7 +4,7 @@ const data: string[] = fs.readFileSync(__dirname + '/data.txt', 'utf8').split('\
 
 data.shift()
 
-type Tree = { [key: string]: number | Tree }
+type Tree = { [key: string]: number | Tree } & { SIZE?: number }
 const tree: Tree = {}
 let cursor = '/'
 
@@ -53,11 +53,11 @@ console.log('Part A: ' + total)
 // Part B
 const TOTAL_SPACE = 70000000
 const MIN_UNUSED_SPACE = 30000000
-const CUR_UNUSED_SPACE = TOTAL_SPACE - (tree.SIZE as number)
+const CUR_UNUSED_SPACE = TOTAL_SPACE - tree.SIZE
 const DIF_UNUSED_SPACE = MIN_UNUSED_SPACE - CUR_UNUSED_SPACE
 
 const dirSizes = []
-const findMinDirCandidates = (obj) => {
+const findMinDirCandidates = (obj: Tree) => {
   for (const [key, value] of Object.entries(obj)) {
     if (key === 'SIZE' && value >= DIF_UNUSED_SPACE) dirSizes.push(value)
     if (typeof value === 'object') findMinDirCandidates(value)

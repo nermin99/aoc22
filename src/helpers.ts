@@ -1,9 +1,9 @@
 export const deepCopy = (m) => JSON.parse(JSON.stringify(m))
 
 export const matrixBuild = (rows: number, cols: number, fill: any = '.') => {
-  const matrix = Array(rows)
-    .fill(fill)
-    .map(() => Array(cols).fill(fill))
+  const matrix = Array.from({ length: rows }, () =>
+    Array.from({ length: cols }, () => (typeof fill === 'object' ? deepCopy(fill) : fill))
+  )
   // @ts-ignore
   matrix.__proto__.toString = function () {
     return this.map((row) => row.join('') + '\n').join('')

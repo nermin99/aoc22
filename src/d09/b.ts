@@ -18,9 +18,7 @@ const nrKnots = 10
 const positions = new Set<string>()
 
 type Point = { x: number; y: number }
-// const rope: Point[] = new Array(nrKnots).fill({ x: 0, y: 0 })
-const rope: Point[] = []
-while (rope.length < nrKnots) rope.push({ x: 0, y: 0 })
+const rope: Point[] = Array.from({ length: nrKnots }, () => ({ x: 0, y: 0 }))
 
 const head: Point = rope.at(0)
 const tail: Point = rope.at(-1)

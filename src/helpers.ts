@@ -1,4 +1,4 @@
-export const deepCopy = (m) => JSON.parse(JSON.stringify(m))
+export const deepCopy = (obj) => JSON.parse(JSON.stringify(obj))
 
 export const matrixBuild = (rows: number, cols: number, fill: any = '.') => {
   const matrix = Array.from({ length: rows }, () =>
